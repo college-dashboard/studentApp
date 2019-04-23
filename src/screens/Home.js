@@ -8,10 +8,6 @@ class Home extends Component {
 
     state = { department: null }
 
-    static navigationOptions = {
-        header: null
-    }
-
     componentDidMount() {
         this.fetchStudentDetails(this.props.auth._id)
     }
@@ -79,10 +75,10 @@ class Home extends Component {
     render() {
         if (this.state.student) {
             return (
-                <View style={{ flex: 1, justifyContent: 'center' }}>
+                <View style={{ flex: 1, marginTop: 30 }}>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                        <XText style={{ flex: 5, fontSize: 18 }}>Subject</XText>
+                        <XText style={{ flex: 4, fontSize: 18 }}>Subject</XText>
                         <XText style={{ flex: 2, fontSize: 18 }}>1st Int</XText>
                         <XText style={{ flex: 2, fontSize: 18 }}>2nd Int</XText>
                         <XText style={{ flex: 1, fontSize: 18 }}>Attnd.</XText>
@@ -102,7 +98,7 @@ class Home extends Component {
                                                     flexDirection: 'row', justifyContent: 'space-around',
                                                     borderTopWidth: 1, borderTopColor: '#e2e2e2', padding: 5
                                                 }}>
-                                                    <XText style={{ flex: 5 }}>{each.name}</XText>
+                                                    <XText style={{ flex: 4 }}>{each.name}</XText>
                                                     <XText style={{ flex: 2 }}>{each.subjectData.firstInternal || 'NA'}</XText>
                                                     <XText style={{ flex: 2 }}>{each.subjectData.secondInternal || 'NA'}</XText>
                                                     <XText style={{ flex: 1 }}>{each.subjectData.attendancePercentage || 'NA'}</XText>

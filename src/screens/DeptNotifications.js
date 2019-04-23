@@ -20,8 +20,8 @@ class CollegeNotifications extends Component {
             .catch(err => console.log(err))
     }
 
-    showModal(description) {
-        this.setState({ description, showDescriptionModal: true })
+    showModal(title, description) {
+        this.setState({ title, description, showDescriptionModal: true })
     }
 
     render() {
@@ -34,7 +34,8 @@ class CollegeNotifications extends Component {
                     onRequestClose={() => this.setState({ showDescriptionModal: false })}
                 >
                     <View style={{ flex: 1, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                        <View style={{ backgroundColor: 'white', padding: 30 }}>
+                        <View style={{ backgroundColor: 'white', padding: 30, margin: 30, borderRadius: 10 }}>
+                            <Text style={{ fontSize: 22, marginBottom: 10, textAlign: 'center', color: 'black' }}>{this.state.title}</Text>
                             <Text style={{ textAlign: 'center', color: 'black' }}>{this.state.description}</Text>
                         </View>
                     </View>
@@ -46,7 +47,7 @@ class CollegeNotifications extends Component {
                             {
                                 this.state.notifications.map(notification => {
                                     return (
-                                        <PlainCard key={notification._id} onPress={() => this.showModal(notification.description)}>
+                                        <PlainCard key={notification._id} onPress={() => this.showModal(notification.title, notification.description)}>
                                             <Text style={{ textAlign: 'center', fontSize: 14, fontWeight: '500', color: 'black' }}>{notification.title}</Text>
                                         </PlainCard>
                                     )

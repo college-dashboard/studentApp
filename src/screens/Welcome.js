@@ -4,9 +4,9 @@ import { Input, Button } from '../components/common'
 
 class Home extends Component {
 
-    state = { mobile:'9744891011' }
+    state = { mobile: '9744891011' }
     static navigationOptions = {
-        header:null
+        header: null
     }
 
     submitMobile() {
@@ -14,10 +14,14 @@ class Home extends Component {
     }
 
     render() {
-        return(
-            <View style={{ flex:1, justifyContent:'center' }}>
-                <Input placeholder="Enter Mobile" value={this.state.mobile} />
-                <Button onPress={ () => this.submitMobile() }>Login</Button>
+        return (
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+                <Input
+                    placeholder="Enter Mobile"
+                    value={this.state.mobile}
+                    onChangeText={(text) => this.setState({ mobile: text })}
+                />
+                <Button onPress={() => this.submitMobile()}>Login</Button>
             </View>
         )
     }
