@@ -4,13 +4,13 @@ import { Input, Button } from '../components/common'
 
 class Home extends Component {
 
-    state = { mobile: '9744891011' }
+    state = { mobile: '' }
     static navigationOptions = {
         header: null
     }
 
     submitMobile() {
-        this.props.navigation.navigate('Otp')
+        this.props.navigation.navigate('Otp', { mobile:this.state.mobile })
     }
 
     render() {

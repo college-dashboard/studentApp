@@ -7,14 +7,14 @@ import { login } from '../redux/actions'
 
 class Otp extends Component {
 
-    state = { otp:'112233' }
+    state = { otp:'' }
 
     static navigationOptions = {
         header:null,
     }
 
     submitOtp() {
-        axios.post('/student/login', { mobile:'9744891011' })
+        axios.post('/student/login', { mobile:this.props.navigation.state.params.mobile })
         .then(res => {
             this.props.login(res.data)
             this.props.navigation.navigate('AppStack')
@@ -28,7 +28,11 @@ class Otp extends Component {
     render() {
         return(
             <View style={{ flex:1, justifyContent:'center' }}>
-                <Input placeholder="Enter OTP" value={this.state.otp} />
+                <Input
+                    placeholder="Enter OTP"
+                    value={this.state.otp}
+                    onChangeText={(text) => this.setState({ otp: text })}
+                />
                 <Button onPress={ () => this.submitOtp() }>Login</Button>
             </View>
         )
