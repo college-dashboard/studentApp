@@ -1,3 +1,5 @@
+import React from 'react'
+import { Image } from 'react-native'
 import { createStackNavigator, createMaterialTopTabNavigator, createBottomTabNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation'
 
 import Splash from '../screens/Splash'
@@ -26,7 +28,34 @@ export const appStack = createBottomTabNavigator({
     Home: { screen: Home },
     Notifications: { screen: notificationsTabs },
     Profile: { screen: Profile },
-})
+},{
+    initialRouteName:'Home',
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+            const { routeName } = navigation.state;
+            switch(routeName){
+                case 'Home':
+                    iconName = require('../assets/home.png');
+                    iconNameFocused = require('../assets/home.png');
+                    break;
+                case 'Notifications':
+                    iconName = require('../assets/notifications.png');
+                    iconNameFocused = require('../assets/notifications.png');
+                    break;
+                case 'Profile':
+                    iconName = require('../assets/profile.png');
+                    iconNameFocused = require('../assets/profile.png');
+                    break;
+            }
+            if(focused)
+            return ( <Image style={{ width: 20, height: 20}} color={tintColor} source={iconNameFocused} /> );
+            else
+            return ( <Image style={{ width: 20, height: 20}} color={tintColor} source={iconName} /> );
+        }
+    }),
+    animationEnabled: false,
+    swipeEnabled: false,
+  })
 
 export const AppNavigator = createSwitchNavigator({
     AuthStack: { screen: authStack },

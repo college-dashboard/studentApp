@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Alert } from 'react-native'
 import { Input, Button } from '../components/common'
 
 class Home extends Component {
 
     state = { mobile: '' }
+
     static navigationOptions = {
         header: null
     }
 
     submitMobile() {
-        this.props.navigation.navigate('Otp', { mobile:this.state.mobile })
+        if(this.state.mobile.length === 10) {
+            this.props.navigation.navigate('Otp', { mobile:this.state.mobile })
+        } else {
+            Alert.alert('Invalid Number', 'Please enter a valid 10 digit mobile number', [{ text:'Okay' }])
+        }
     }
 
     render() {
@@ -19,7 +24,7 @@ class Home extends Component {
                 <Input
                     placeholder="Enter Mobile"
                     value={this.state.mobile}
-                    onChangeText={(text) => this.setState({ mobile: text })}
+                    onChangeText={(text) => this.setState({ mobile:text })}
                 />
                 <Button onPress={() => this.submitMobile()}>Login</Button>
             </View>
