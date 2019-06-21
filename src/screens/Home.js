@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { PlainCard, XText } from '../components/common'
@@ -75,7 +75,7 @@ class Home extends Component {
     render() {
         if (this.state.student) {
             return (
-                <View style={{ flex: 1, marginTop: 30 }}>
+                <ScrollView style={{ flex: 1, marginTop: 30 }}>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
                         <XText style={{ flex: 4, fontSize: 18 }}>Subject</XText>
@@ -111,7 +111,7 @@ class Home extends Component {
                         })
                     }
 
-                </View>
+                </ScrollView>
             )
 
         } else {

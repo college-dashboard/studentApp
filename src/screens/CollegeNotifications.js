@@ -13,7 +13,7 @@ class CollegeNotifications extends Component {
     }
 
     componentDidMount() {
-        axios.post('/notification/get', {})
+        axios.post('/notification/get', { params:{ ccollege:true }})
             .then(res => {
                 this.setState({ notifications: res.data })
             })
